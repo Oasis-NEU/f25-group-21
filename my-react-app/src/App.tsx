@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import './App.css'
+import Authentication from './supabase'
+import { supabase } from './supabase'
+import { parseFile } from "./parsing";
+
 
 function App() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -16,6 +22,9 @@ function App() {
     if (selectedFile) {
       console.log('File selected:', selectedFile.name)
       // TODO: Implement file upload logic
+      const blobUrl = URL.createObjectURL(selectedFile)
+      const parsedResume = parseFile(blobUrl);
+
     }
   }
 
@@ -45,4 +54,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
