@@ -29,5 +29,9 @@ dist-ssr
 .json
 .json.cts
 .map
+.js
+.ts
+
+
 
 
