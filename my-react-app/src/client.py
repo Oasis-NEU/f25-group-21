@@ -38,7 +38,10 @@ def get_suggestions(parsed_resume: str) -> str| None:
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         config=types.GenerateContentConfig(
-        system_instruction="Give an ATS score out of 100 for this resume based on the job description. Provide suggestions for further improvement."),
+        system_instruction="Give an ATS score out of 100 for this resume. " \
+        "Provide suggestions for further improvement. Give a brief review. " \
+        "If anything doesn't look like a resume, give no feedback and state t" \
+        "hat it is not a resume."),
 
         contents = parsed_resume
     )
